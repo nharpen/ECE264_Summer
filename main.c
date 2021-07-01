@@ -11,6 +11,19 @@ int diff(char *fname1, char *fname2) {
 }
 
 
-int main() {
+int main(int argc, char **argv) {
+
+  if(argc != 3)
+    {
+      return EXIT_FAILURE;
+    }
+
+  char *inputfile = argv[1];
+  char *outputfile = argv[2];
+
+  concat_str(inputfile,outputfile);
+  return EXIT_SUCCESS;
+
+
 
 }
