@@ -14,21 +14,34 @@ void concat_str(char *filename_in, char *filename_out) {
   FILE * outputFile = fopen(filename_out, "w");
 
   char lineContent[128] = {0};
+  char * result;
+  char output = [];
+  int count = 0;
 
-  while(fgets(lineContent,128, inputFile) != NULL)
+
+
+  while((result = fgets(lineContent,128, inputFile)) != NULL)
     {
 
-      char *result = fgets(lineContent, 128, inputFile);
+      //char *result = fgets(lineContent, 128, inputFile);
       if(result == NULL)
 	{
 	  printf("Reading input file failed\n");
 	  return;
 	}
       //printf("%s\n", lineContent);
-      fputs(lineContent, outputFile);
+      //fputs(lineContent, outputFile);
+      output[count] = lineContent;
+      count++;
+
 
     }
   
+  for(int i = 0; i < count; i ++)
+    {
+      fputs(output[i], outputFile);
+    }
+
   fclose(inputFile);
   fclose(outputFile);
   return;

@@ -9,7 +9,7 @@ Node *alloc_node(int value)
     if(node == NULL)
     {
         fprintf(stderr, "[ERROR]: malloc() failed...\n");
-        exit(NULL);
+	return NULL;
     }
     node->value = value;
     node->next = NULL;
@@ -43,7 +43,7 @@ void print_list(Node *head)
     for(int i = 0; i < size; i++)
         {
             printf("%d\n", ptr->value);
-            ptr = ptr-next;
+            ptr = ptr->next;
         }
     return;
 }
@@ -122,7 +122,7 @@ Node *remove_nth_node(Node *head, int n)
         {
             if((ptr->value) == n)
             {
-                (ptr->prev)->next = ptr-next;
+                (ptr->prev)->next = ptr->next;
                 free(ptr);
             }
             ptr = ptr->next;
